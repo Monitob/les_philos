@@ -6,7 +6,7 @@
 #    By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/04 22:30:52 by jbernabe          #+#    #+#              #
-#    Updated: 2014/05/09 04:31:39 by jbernabe         ###   ########.fr        #
+#    Updated: 2014/05/10 08:09:36 by jbernabe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 NAME = philo
 
-CFLAGS = -g --debug -I ../minilibx/  -Wall -Wextra -Werror -I./libft/ 
+CFLAGS = -g --debug -I ../minilibx/  -Wall -Wextra -Werror
 
 LIBMLX	= -L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx -lm
 
@@ -22,8 +22,7 @@ PATH_SRC = ./src
 PATH_OBJ = ./objs
 PATH_INC = ./includes
 
-SRC = main.c tools.c read_map.c draw_game.c color.c display_screen.c \
-		fct_debug.c key_control.c
+SRC = main.c
 
 OBJ = $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRC))
 
@@ -34,7 +33,7 @@ lib:
 
 $(NAME): $(OBJ)
 		@$(MAKE) -C libft
-		@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L./libft/  \
+		@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -lpthread -L./libft/  \
 		$(LIBMLX) -L/usr/lib/ -lft
 
 $(PATH_OBJ)/%.o: $(addprefix $(PATH_SRC)/, %.c)
