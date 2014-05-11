@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/09 04:33:38 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/05/11 05:44:41 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/05/11 17:17:04 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 /*
 ** Maccros
 */
+# define TIMEOUT		9900000
 # define MAX_LIFE		50 // nombre de poins de vie max
-# define EAT_T			5 //nombre de segs pour manger
-# define REST_T			3 // nombre de segs lesquels un philo se repose
-# define THINK_T		2 // nombre de segs pour reflechir
+# define EAT_T			5000000 //nombre de segs pour manger
+# define REST_T			3000000 // nombre de segs lesquels un philo se repose
+# define THINK_T		2000000 // nombre de segs pour reflechir
 # define THINK_OUT		5 // nombre de segs pour arreter la simulation
 # define THREADS		7
 # define EBUSY			0

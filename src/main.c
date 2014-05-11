@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 17:47:16 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/05/11 16:53:58 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/05/11 17:17:07 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	*fct_thread_son(void *param)
 	int		rizq;
 	int 	rrigh;
 
-
 	table = (t_philo *)param;
 	nb = table->nb;
 	
@@ -51,13 +50,13 @@ void	*fct_thread_son(void *param)
 			printf("EATING THE SUSHI!\n");
 			printf("je suis le thread numero %d\n mes points de vie sont %d\n mon mutex de gauche c'est %p\n mon mutex de droite c'est %p\n", nb,
 			table->philo_st[nb].life, table->philo_st[nb].m_left, table->philo_st[nb].m_right);
-			if ((usleep(EAT_T)) == EBUSY)
-			{
-				if (table->philo_st[nb].life != MAX_LIFE)
-					table->philo_st[nb].life = MAX_LIFE;
-				pthread_mutex_unlock(table->philo_st[nb].m_left);
-				pthread_mutex_unlock(table->philo_st[nb].m_right);
-			}		
+			// if ((usleep(EAT_T)) == EBUSY)
+			// {
+			// 	if (table->philo_st[nb].life != MAX_LIFE)
+			// 		table->philo_st[nb].life = MAX_LIFE;
+			// 	pthread_mutex_unlock(table->philo_st[nb].m_left);
+			// 	pthread_mutex_unlock(table->philo_st[nb].m_right);
+			// }		
 		}
 		if ((rrigh != EBUSY && rizq == EBUSY) || (rrigh == EBUSY && rizq != EBUSY))
 		{
@@ -71,13 +70,11 @@ void	*fct_thread_son(void *param)
 		 		
 
 		 	// }
-
 			if (table->philo_st[nb].life == 0)
 			{
 				pthread_mutex_destroy(table->philo_st[nb].m_left);
 				pthread_mutex_destroy(table->philo_st[nb].m_right);
 			}
-
 		}
 		if (rrigh != EBUSY && rizq != EBUSY)
 		{
@@ -92,7 +89,6 @@ void	*fct_thread_son(void *param)
 				pthread_mutex_destroy(table->philo_st[nb].m_right);
 			}
 		}
-	
 	return (0);
 
 }
